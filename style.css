@@ -1,0 +1,217 @@
+/* Setup */
+:root {
+    --lightgray: rgb(150, 150, 150);
+    --darkgray: rgb(90, 90, 90);
+    --navy: rgb(0,35,102);
+    --typewriter-char: 24;
+    --typewriter-speed: 6s;
+}
+*,
+*::before,
+*::after {
+    font-family: 'Fira Code', monospace;
+}
+/* end of Setup */
+
+/* Custom classes */
+.title {
+    font-size: 3vw;
+}
+.title-secondary {
+    font-size: 2.5vw;
+}
+.lightgray {
+    color: var(--lightgray);
+}
+.darkgray {
+    color: var(--darkgray);
+}
+.border-lightgray {
+    border: 0.2em solid var(--lightgray);
+}
+.border-rounded {
+    border-radius: 2em;
+}
+.container {
+    padding: 10px;
+    width: 60%;
+}
+.row {
+    padding: 10px;
+}
+/* end of Custom classes */
+
+/* Header */
+.info-detail {
+    font-size: 1.5vw;
+    padding: 2px;
+}
+a.info-detail:hover, 
+a.info-detail:focus, 
+a.info-detail:visited {
+    color: var(--darkgray);
+}
+a.info-detail:hover, a.info-detail:focus {
+    outline: auto var(--darkgray) 2px;
+    outline-offset: 0.1em;
+    transform: scale(1.1);
+    transition: transform 0.2s ease-in-out;
+}
+.vl {
+    border-left: 1px solid var(--lightgray);
+    height: 15px;
+    margin: 0 10px;
+}
+hr {
+    border: 1px solid var(--lightgray);
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* end of Header */
+
+/* Main */
+
+/* Welcome */
+.typewriter {
+    font-size: max(25px, 3.5vw);
+    position: relative;
+}
+.typewriter::before,
+.typewriter::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.typewriter::before {
+    background-color: white;
+    animation: character-show var(--typewriter-speed) steps(var(--typewriter-char)) infinite;
+}
+.typewriter::after {
+    width: 0.1em;
+    background-color: var(--darkgray);
+    animation: character-show var(--typewriter-speed) steps(var(--typewriter-char)) infinite,
+                cursor-blink 1s var(--typewriter-speed) infinite;
+}
+.description {
+    font-size: max(15px, 2.1vw);
+    padding: 2%;
+}
+.typewriter-detail {
+    transform: translateY(1.2em);
+    opacity: 0;
+    animation: fade-in-up 0.5s calc(var(--typewriter-speed) * 0.55) forwards ease-in;
+}
+/* end of Welcome */
+
+/* Table of Contents */
+#table-of-contents {
+    opacity: 0;
+    transform: translateY(1.2em);
+    animation: fade-in-up 0.5s calc(var(--typewriter-speed) * 0.55 + 0.8s) forwards ease-in;
+    box-shadow: 1.5vw 1.5vw 0 0 var(--darkgray),
+                2.25vw 2.25vw 0 0 var(--lightgray);
+}
+li {
+    position: relative;
+    line-height: 1.8em;
+    font-size: 2vw;
+    border-style: solid;
+    border-width: 1px 0;
+    border-color: transparent;
+    box-shadow: none;
+    transition: font-size 0.1s ease-in;
+}
+.arrow-left {
+    transform: translateX(1.2em);
+}
+.arrow-right {
+    transform: translateX(-1.2em);
+}
+.arrow-left::after,
+.arrow-right::after {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    padding: 0 20px;
+    opacity: 0;
+}
+.arrow-left::after {
+    content: "\f0a8";
+}
+.arrow-right::after {
+    content: "\f0a9";
+}
+li:hover {
+    font-size: 2.25vw;
+    border-width: 1px 0;
+    border-color: lightgray;
+    box-shadow: 0 0.1em 0.1em -0.12em var(--darkgray) inset,
+                0 -0.1em 0.1em -0.12em var(--darkgray) inset;
+    transition: font-size 0.1s ease-in,
+                border-color 0.1s ease-in,
+                box-shadow 0.1s ease-in;
+}
+li:hover .arrow-left::after,
+li:hover .arrow-right::after {
+    opacity: 1;
+    transition: opacity 0.3s ease-in;
+}
+li:hover .arrow-left,
+li:hover .arrow-right {
+    transform: translateX(0);
+    transition: transform 0.3s ease-in;
+}
+/* end of Table of Contents */
+
+/* end of Main */
+
+/* Keyframes */
+@keyframes character-show {
+    50% {
+        left: 100%;
+    }
+    70% {
+        left: 100%;
+    }
+}
+@keyframes cursor-blink {
+    49.99% {
+        background-color: var(--darkgray);
+    }
+    50% {
+        background-color: transparent;;
+    }
+    99.99% {
+        background-color: transparent;
+    }
+    100% {
+        background-color: var(--darkgray);
+    }
+}
+@keyframes fade-in-up {
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+@keyframes fade-in-side {
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+/* end of Keyframes */
+
+/* Media queries */
+@media(max-width: 768px) {
+    .title {
+        font-size: 30px;
+    }
+    .info-detail {
+        font-size: 15px;
+    }
+}
+/* end of Media queries */

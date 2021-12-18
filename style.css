@@ -6,6 +6,8 @@
     --royal-azure: rgb(0,56,168);
     --typewriter-char: 24;
     --typewriter-speed: 6s;
+    --font-awesome-family: "Font Awesome 5 Free";
+    --font-awesome-weight: 900;
 }
 *,
 *::before,
@@ -16,8 +18,7 @@ a {
     color: var(--navy);
     text-decoration: none;
 }
-a:hover, 
-a:focus {
+a:is(:hover, :focus) {
     color: var(--royal-azure);
     transition: color 0.2s ease-in-out;
 }
@@ -44,7 +45,7 @@ a:focus {
 }
 .container {
     padding: 10px;
-    width: 60%;
+    width: 75%;
 }
 .row {
     padding: 10px;
@@ -53,6 +54,29 @@ a:focus {
     border-bottom: 1px solid var(--darkgray);
     margin-bottom: 30px;
 }
+.link-body {
+    position: relative;
+}
+.link-body::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background-color: var(--royal-azure);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.2s ease-in-out;
+}
+.link-body:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+    transition: transform 0.2s ease-in-out;
+}
+.section-content {
+    padding-bottom: 0;
+}
 /* end of Custom classes */
 
 /* Header */
@@ -60,12 +84,10 @@ a:focus {
     font-size: 1.5vw;
     padding: 2px;
 }
-a.info-detail:hover, 
-a.info-detail:focus, 
-a.info-detail:visited {
+a.info-detail:is(:hover, :focus, :visited) {
     color: var(--darkgray);
 }
-a.info-detail:hover, a.info-detail:focus {
+a.info-detail:is(:hover, :focus) {
     outline: auto var(--darkgray) 2px;
     outline-offset: 0.1em;
     transform: scale(1.1);
@@ -101,7 +123,7 @@ hr {
     right: 0;
 }
 .typewriter::before {
-    background-color: white;
+    background-color: #fff;
     animation: character-show var(--typewriter-speed) steps(var(--typewriter-char)) infinite;
 }
 .typewriter::after {
@@ -129,10 +151,16 @@ hr {
     box-shadow: 1.5vw 1.5vw 0 0 var(--darkgray),
                 2.25vw 2.25vw 0 0 var(--lightgray);
 }
+.btn#toggle-btn:is(:focus, :focus-visible) {
+    box-shadow: none;
+}
+.btn#toggle-btn:focus-visible{
+    outline: var(--darkgray) solid 0.2em;
+}
 .dropdown-icon::after {
     content: "\f13a";
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
+    font-family: var(--font-awesome-family);
+    font-weight: var(--font-awesome-weight);
 }
 .table-content {
     position: relative;
@@ -150,10 +178,9 @@ hr {
 .arrow-right {
     transform: translateX(-1.2em);
 }
-.arrow-left::after,
-.arrow-right::after {
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
+:is(.arrow-left, .arrow-right)::after {
+    font-family: var(--font-awesome-family);
+    font-weight: var(--font-awesome-weight);
     padding: 0 20px;
     opacity: 0;
 }
@@ -166,45 +193,42 @@ hr {
 .table-content:hover {
     font-size: 2.25vw;
     border-width: 1px 0;
-    border-color: lightgray;
+    border-color: var(--lightgray);
     box-shadow: 0 0.1em 0.1em -0.12em var(--darkgray) inset,
                 0 -0.1em 0.1em -0.12em var(--darkgray) inset;
     transition: font-size 0.1s ease-in,
                 border-color 0.1s ease-in,
                 box-shadow 0.1s ease-in;
 }
-.table-content:hover .arrow-left::after,
-.table-content:hover .arrow-right::after {
+.table-content:hover :is(.arrow-left, .arrow-right)::after {
     opacity: 1;
     transition: opacity 0.3s ease-in;
 }
-.table-content:hover .arrow-left,
-.table-content:hover .arrow-right {
+.table-content:hover :is(.arrow-left, .arrow-right) {
     transform: translateX(0);
     transition: transform 0.3s ease-in;
 }
 /* end of Table of Contents */
 
+/* About Me */
+#about-me {
+    opacity: 0;
+    transform: translateY(1.2em);
+    animation: fade-in-up 0.5s calc(var(--typewriter-speed) * 0.55 + 1.4s) forwards ease-in;
+}
+.smiley::after {
+    content: "\f59c";
+    font-family: var(--font-awesome-family);
+    font-weight: var(--font-awesome-weight);
+    font-size: 18px;
+}
+/* end of About Me */
+
 /* References */
-.reference {
-    position: relative;
-}
-.reference::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 1px;
-    background-color: var(--royal-azure);
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.2s ease-in-out;
-}
-.reference:hover::after {
-    transform: scaleX(1);
-    transform-origin: left;
-    transition: transform 0.2s ease-in-out;
+#references {
+    opacity: 0;
+    transform: translateY(1.2em);
+    animation: fade-in-up 0.5s calc(var(--typewriter-speed) * 0.55 + 2s) forwards ease-in;
 }
 /* end of References */
 

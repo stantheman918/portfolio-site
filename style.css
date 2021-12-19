@@ -1,9 +1,13 @@
 /* Setup */
 :root {
-    --lightgray: rgb(150, 150, 150);
+    --lightgray: rgb(175, 175, 175);
+    --lightergray: rgb(210, 210, 210);
     --darkgray: rgb(90, 90, 90);
     --navy: rgb(0,35,102);
     --royal-azure: rgb(0,56,168);
+    --lightblue: rgb(162, 210, 255);
+    --pastelblue: #78AAE0;
+    --pastelblue-dark: rgb(82, 134, 186);
     --typewriter-char: 24;
     --typewriter-speed: 6s;
     --font-awesome-family: "Font Awesome 5 Free";
@@ -24,12 +28,16 @@ a:is(:hover, :focus) {
 }
 /* end of Setup */
 
-/* Custom classes */
+/* Utility classes */
 .title {
     font-size: 3vw;
 }
 .title-secondary {
     font-size: 2.5vw;
+}
+.paragraph {
+    font-weight: normal;
+    font-size: 1.5vw;
 }
 .lightgray {
     color: var(--lightgray);
@@ -37,8 +45,14 @@ a:is(:hover, :focus) {
 .darkgray {
     color: var(--darkgray);
 }
-.border-lightgray {
-    border: 0.2em solid var(--lightgray);
+.pastelblue {
+    color: var(--pastelblue);
+}
+.pastelblue-dark {
+    color: var(--pastelblue-dark);
+}
+.border-blue {
+    border: 0.2em solid var(--pastelblue);
 }
 .border-rounded {
     border-radius: 2em;
@@ -51,8 +65,13 @@ a:is(:hover, :focus) {
     padding: 10px;
 }
 .heading {
-    border-bottom: 1px solid var(--darkgray);
+    border-bottom: 2px solid var(--navy);
     margin-bottom: 30px;
+}
+.heading-smaller {
+    font-size: 2vw;
+    font-weight: bold;
+    padding: 10px;
 }
 .link-body {
     position: relative;
@@ -77,7 +96,7 @@ a:is(:hover, :focus) {
 .section-content {
     padding-bottom: 0;
 }
-/* end of Custom classes */
+/* end of Utility classes */
 
 /* Header */
 .info-detail {
@@ -99,7 +118,7 @@ a.info-detail:is(:hover, :focus) {
     margin: 0 10px;
 }
 hr {
-    border: 1px solid var(--lightgray);
+    border: 1px solid var(--royal-azure);
     width: 90%;
     margin-left: auto;
     margin-right: auto;
@@ -148,8 +167,8 @@ hr {
     opacity: 0;
     transform: translateY(1.2em);
     animation: fade-in-up 0.5s calc(var(--typewriter-speed) * 0.55 + 0.8s) forwards ease-in;
-    box-shadow: 1.5vw 1.5vw 0 0 var(--darkgray),
-                2.25vw 2.25vw 0 0 var(--lightgray);
+    box-shadow: 1.5vw 1.5vw 0 0 var(--navy),
+                2.25vw 2.25vw 0 0 var(--pastelblue);
 }
 .btn#toggle-btn:is(:focus, :focus-visible) {
     box-shadow: none;
@@ -216,11 +235,75 @@ hr {
     transform: translateY(1.2em);
     animation: fade-in-up 0.5s calc(var(--typewriter-speed) * 0.55 + 1.4s) forwards ease-in;
 }
-.smiley::after {
-    content: "\f59c";
+.flip-card {
+    padding: 0;
+}
+.flip-card:hover .content {
+    transform: rotateY(0.5turn);
+}
+.content {
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 2s;
+    padding: 8em 5em;
+}
+.card-front,
+.card-back {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+}
+.card-front {
+    background-color: var(--pastelblue);
+}
+.card-front::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    border: 2px solid var(--navy);
+    border-radius: 8px;
+    transform: translateZ(3rem);
+}
+.card-back {
+    transform: rotateY(0.5turn);
+    background-color: var(--navy);
+}
+.card-title {
+    transform: translateZ(4rem);
+    padding-top: 2.8em;
+}
+.card-title::after {
     font-family: var(--font-awesome-family);
     font-weight: var(--font-awesome-weight);
-    font-size: 18px;
+    color: #000;
+    font-size: 2em;
+}
+.icon-person::after {
+    content: "\f183";
+}
+.icon-job::after {
+    content: "\f0b1";
+}
+.icon-question::after {
+    content: "\f059";
+}
+.card-subtitle {
+    color: #000;
+    transform: translateZ(3rem);
+    padding-bottom: 8em;
+}
+.card-body {
+    color: var(--lightergray);
+    transform: translateZ(2rem);
 }
 /* end of About Me */
 
@@ -272,12 +355,28 @@ hr {
 /* end of Keyframes */
 
 /* Media queries */
+@media(max-width: 991px) {
+    .card-title {
+        font-size: 25px;
+    }
+    .card-subtitle {
+        font-size: 20px;
+    }
+}
 @media(max-width: 768px) {
     .title {
         font-size: 30px;
     }
     .info-detail {
         font-size: 15px;
+    }
+}
+@media(max-width: 576px) {
+    .card-title {
+        font-size: 20px;
+    }
+    .card-subtitle {
+        font-size: 16px;
     }
 }
 /* end of Media queries */

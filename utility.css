@@ -1,0 +1,85 @@
+/* Utility classes */
+.title {
+    font-size: 3vw;
+}
+.title-secondary {
+    font-size: 2.5vw;
+}
+.paragraph {
+    font-weight: normal;
+    font-size: 1.5vw;
+}
+.lightgray {
+    color: var(--lightgray);
+}
+.darkgray {
+    color: var(--darkgray);
+}
+.pastelblue {
+    color: var(--pastelblue);
+}
+.pastelblue-dark {
+    color: var(--pastelblue-dark);
+}
+.border-blue {
+    border: 0.2em solid var(--pastelblue);
+}
+.border-rounded {
+    border-radius: 2em;
+}
+.m-ver-auto {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.m-hor-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+.p-ver-auto {
+    padding-top: auto;
+    padding-bottom: auto;
+}
+.p-hor-auto {
+    padding-left: auto;
+    padding-right: auto;
+}
+.container {
+    padding: 10px;
+    width: 75%;
+}
+.row {
+    padding: 10px;
+}
+.heading {
+    border-bottom: 2px solid var(--navy);
+    margin-bottom: 30px;
+}
+.heading-smaller {
+    font-size: 2vw;
+    font-weight: bold;
+    padding: 10px;
+}
+.link-body {
+    position: relative;
+}
+.link-body::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background-color: var(--royal-azure);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.2s ease-in-out;
+}
+.link-body:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+    transition: transform 0.2s ease-in-out;
+}
+.section-content {
+    padding-bottom: 0;
+}
+/* end of Utility classes */

@@ -28,76 +28,6 @@ a:is(:hover, :focus) {
 }
 /* end of Setup */
 
-/* Utility classes */
-.title {
-    font-size: 3vw;
-}
-.title-secondary {
-    font-size: 2.5vw;
-}
-.paragraph {
-    font-weight: normal;
-    font-size: 1.5vw;
-}
-.lightgray {
-    color: var(--lightgray);
-}
-.darkgray {
-    color: var(--darkgray);
-}
-.pastelblue {
-    color: var(--pastelblue);
-}
-.pastelblue-dark {
-    color: var(--pastelblue-dark);
-}
-.border-blue {
-    border: 0.2em solid var(--pastelblue);
-}
-.border-rounded {
-    border-radius: 2em;
-}
-.container {
-    padding: 10px;
-    width: 75%;
-}
-.row {
-    padding: 10px;
-}
-.heading {
-    border-bottom: 2px solid var(--navy);
-    margin-bottom: 30px;
-}
-.heading-smaller {
-    font-size: 2vw;
-    font-weight: bold;
-    padding: 10px;
-}
-.link-body {
-    position: relative;
-}
-.link-body::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 1px;
-    background-color: var(--royal-azure);
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.2s ease-in-out;
-}
-.link-body:hover::after {
-    transform: scaleX(1);
-    transform-origin: left;
-    transition: transform 0.2s ease-in-out;
-}
-.section-content {
-    padding-bottom: 0;
-}
-/* end of Utility classes */
-
 /* Header */
 .info-detail {
     font-size: 1.5vw;
@@ -255,8 +185,6 @@ hr {
     right: 0;
     transform-style: preserve-3d;
     backface-visibility: hidden;
-    display: grid;
-    place-items: center;
     border-radius: 10px;
 }
 .card-front {
@@ -279,7 +207,8 @@ hr {
 }
 .card-title {
     transform: translateZ(4rem);
-    padding-top: 2.8em;
+    padding: 0;
+    margin-top: -1em;
 }
 .card-title::after {
     font-family: var(--font-awesome-family);
@@ -299,19 +228,28 @@ hr {
 .card-subtitle {
     color: #000;
     transform: translateZ(3rem);
-    padding-bottom: 8em;
 }
 .card-body {
     color: var(--lightergray);
     transform: translateZ(2rem);
+    display: grid;
+    place-items: center;
 }
 /* end of About Me */
+
+/* Education */
+#education {
+    opacity: 0;
+    transform: translateY(1.2em);
+    animation: fade-in-up 0.5s calc(var(--typewriter-speed) * 0.55 + 2s) forwards ease-in;
+}
+/* end of Education */
 
 /* References */
 #references {
     opacity: 0;
     transform: translateY(1.2em);
-    animation: fade-in-up 0.5s calc(var(--typewriter-speed) * 0.55 + 2s) forwards ease-in;
+    animation: fade-in-up 0.5s calc(var(--typewriter-speed) * 0.55 + 2.6s) forwards ease-in;
 }
 /* end of References */
 

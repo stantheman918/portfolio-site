@@ -204,6 +204,8 @@ hr {
 .card-back {
     transform: rotateY(0.5turn);
     background-color: var(--navy);
+    display: grid;
+    place-items: center;
 }
 .card-title {
     transform: translateZ(4rem);
@@ -232,8 +234,6 @@ hr {
 .card-body {
     color: var(--lightergray);
     transform: translateZ(2rem);
-    display: grid;
-    place-items: center;
 }
 /* end of About Me */
 

@@ -97,8 +97,8 @@ hr {
     opacity: 0;
     transform: translateY(1.2em);
     animation: fade-in-up 0.5s calc(var(--typewriter-speed) * 0.55 + 0.8s) forwards ease-in;
-    box-shadow: 1.5vw 1.5vw 0 0 var(--navy),
-                2.25vw 2.25vw 0 0 var(--pastelblue);
+    box-shadow: 1.5vw 1.2vw 0 0 var(--navy),
+                2.25vw 1.8vw 0 0 var(--pastelblue);
 }
 .btn#toggle-btn:is(:focus, :focus-visible) {
     box-shadow: none;

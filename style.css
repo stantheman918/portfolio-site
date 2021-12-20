@@ -110,6 +110,7 @@ hr {
     content: "\f13a";
     font-family: var(--font-awesome-family);
     font-weight: var(--font-awesome-weight);
+    color: var(--navy);
 }
 .table-content {
     position: relative;
@@ -132,6 +133,7 @@ hr {
     font-weight: var(--font-awesome-weight);
     padding: 0 20px;
     opacity: 0;
+    color: var(--navy);
 }
 .arrow-left::after {
     content: "\f0a8";
@@ -242,6 +244,63 @@ hr {
     opacity: 0;
     transform: translateY(1.2em);
     animation: fade-in-up 0.5s calc(var(--typewriter-speed) * 0.55 + 2s) forwards ease-in;
+}
+.education-container {
+    position: relative;
+}
+.btn-education {
+    width: 10vw;
+    height: 10vw;
+    background-color: #fff;
+    transition: background-color 0.5s ease-in-out;
+}
+.btn-education:hover {
+    background-color: var(--pastelblue-dark);
+    transition: background-color 0.5s ease-in-out;
+}
+.btn-education:hover .btn-education-icon::after {
+    color: white;
+    transition: color 0.5s ease-in-out;
+}
+.btn-education-icon::after {
+    transition: color 0.5s ease-in-out;
+    font-family: var(--font-awesome-family);
+    font-weight: var(--font-awesome-weight);
+}
+.highschool-icon::after {
+    content: "\f549";
+}
+.college-icon::after {
+    content: "\f19d";
+}
+.education-content {
+    position: absolute;
+    top: -2vw;
+    bottom: -2vw;
+    left: 0;
+    right: 0;
+    border: 2px solid var(--pastelblue-dark);
+    border-radius: 1vw;
+    padding: 1vw;
+    padding-left: 20vw;
+    z-index: -1;;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transform: translateX(-3vw);
+}
+.education-ul {
+    position: relative;
+    width: 70%;
+    margin-bottom: auto;
+    margin-top: auto;
+    display: block;
+}
+.education-li {
+    text-align: left;
+    padding: 5px;
+    font-size: 1.25vw;
 }
 /* end of Education */
 

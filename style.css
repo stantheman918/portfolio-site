@@ -12,11 +12,15 @@
     --typewriter-speed: 6s;
     --font-awesome-family: "Font Awesome 5 Free";
     --font-awesome-weight: 900;
+    --gradient: linear-gradient(20deg, #a2d2ff, #76a3d9, #4e77b3, #2a4c8d, #002466);
 }
 *,
 *::before,
 *::after {
     font-family: 'Fira Code', monospace;
+}
+html {
+    scroll-behavior: smooth;
 }
 a {
     color: var(--navy);
@@ -26,9 +30,49 @@ a:is(:hover, :focus) {
     color: var(--royal-azure);
     transition: color 0.2s ease-in-out;
 }
+::selection {
+    background-color: var(--navy);
+    color: white;
+}
 /* end of Setup */
 
 /* Header */
+.skip-nav-link {
+    position: absolute;
+    transform: translateY(-135%);
+    padding: 0.8rem;
+    background-color: var(--pastelblue-dark);
+    color: #fff;
+    top: 0;
+    left: 2rem;
+    font-size: min(2vw, 20px);
+    border-radius: 0 0 1rem 1rem;
+    transition: transform 350ms ease-in-out;
+}
+.skip-nav-link:focus {
+    color: #fff;
+    transform: translateY(0);
+    transition: transform 350ms ease-in-out;
+}
+.name {
+    position: relative;
+    font-weight: 900;
+    width: max-content;
+    padding: 1.5rem 3rem;
+    margin-left: auto;
+    margin-right: auto;
+    border: 0.3em solid var(--pastelblue-dark);
+    border-radius: 1rem;
+    color: transparent;
+    background-color: var(--navy);
+    background-image: var(--gradient);
+    background-size: 250%;
+    background-position: left;
+    background-clip: text;
+    -webkit-background-clip: text;
+    clip-path: polygon(0 0, 84% 0%, 78% 14%, 86% 14%, 92% 0%, 100% 0%, 100% 100%, 16% 100%, 22% 86%, 14% 86%, 8% 100%, 0% 100%);
+    animation: gradient 5s infinite alternate;
+}
 .info-detail {
     font-size: 1.5vw;
     padding: 2px;
@@ -190,7 +234,7 @@ hr {
     border-radius: 10px;
 }
 .card-front {
-    background-color: var(--pastelblue);
+    background-color: var(--pastelblue-dark);
 }
 .card-front::before {
     content: "";
@@ -205,7 +249,7 @@ hr {
 }
 .card-back {
     transform: rotateY(0.5turn);
-    background-color: var(--navy);
+    background-color: var(--pastelblue);
     display: grid;
     place-items: center;
 }
@@ -234,7 +278,7 @@ hr {
     transform: translateZ(3rem);
 }
 .card-body {
-    color: var(--lightergray);
+    color: var(--navy);
     transform: translateZ(2rem);
 }
 /* end of About Me */
@@ -257,6 +301,10 @@ hr {
 .btn-education:hover {
     background-color: var(--pastelblue-dark);
     transition: background-color 0.5s ease-in-out;
+}
+.btn-education:focus {
+    outline: 0.2em solid var(--pastelblue-dark);
+    outline-offset: 0.4em;
 }
 .btn-education:hover .btn-education-icon::after {
     color: #fff;
@@ -301,6 +349,7 @@ hr {
     text-align: left;
     padding: 5px;
     font-size: 1.25vw;
+    cursor: text;
 }
 /* end of Education */
 
@@ -315,6 +364,17 @@ hr {
 /* end of Main */
 
 /* Keyframes */
+@keyframes gradient {
+    0% {
+        background-position: left;
+    }
+    80% {
+        background-position: center;
+    }
+    100% {
+        background-position: right;
+    }
+}
 @keyframes character-show {
     50% {
         left: 100%;
